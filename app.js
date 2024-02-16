@@ -1,8 +1,5 @@
 //tic tac toe game
 
-// for taking input in terminal
-//const prompt = require('prompt-sync')();
-
 
 let gameboard=['x','o','o',
                 'x','o','o',
