@@ -29,35 +29,62 @@ function getWinner(gameboard){
         }
     }
     return "";
-   
 }
 
 
 
 //DOM
 let box = document.getElementsByClassName("grid-item");
-console.log(box[0].dataset);
-console.log(box[0].innerHTML);
+// console.log(box[0].dataset);
+// console.log(box[0].innerHTML);
 
 
-turn = "x"
 
+let turn="o";
+let chance =9;
 let boxContainer = document.querySelector(".grid-container");
 boxContainer.addEventListener("click", modifyBox);
 
 function modifyBox(e){
+
     if(e.target !== e.currentTarget){
+        document.querySelector("#turn-wala").innerHTML=turn;
+
+        if(turn=="x"){
+            turn ="o";
+        }else{
+            turn="x";
+        }
+        
         var clickedItem = e.target.dataset.pos; //this returns data attribute of clicked element
         gameboard[clickedItem]=turn;
         box[clickedItem].innerHTML=turn;
+        let winner = getWinner(gameboard);
+        if(winner!==""){
+            document.querySelector("#winner").innerHTML=winner+" won this game!"
+            //alert(winner+ " is Winner!");
+            return;
+        }
+        chance--;
+        if(chance==0){
+            alert("match ties");
+            return;
+        }
     }
     e.stopPropagation();
 }
 
-console.log(getWinner(gameboard));
 
 
 
-while(getWinner(gameboard)==""){
-    
-}
+document.querySelector("button").addEventListener("click", ()=>{
+    gameboard=['','','',
+                '','','',
+                '','',''];
+    for(let i of box){
+        i.innerHTML="";
+    }
+    chance = 9;
+    document.querySelector("#winner").innerHTML="";
+
+});
