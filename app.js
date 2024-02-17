@@ -1,9 +1,9 @@
 //tic tac toe game
 
 
-let gameboard=['x','o','o',
-                'x','o','o',
-                'o','o','x'];
+let gameboard=['','','',
+                '','','',
+                '','',''];
 
 
 
@@ -32,8 +32,32 @@ function getWinner(gameboard){
    
 }
 
-console.log(getWinner(gameboard));
+
 
 //DOM
-let zero = document.getElementsByClassName("grid-item");
-console.log(zero[0].dataset);
+let box = document.getElementsByClassName("grid-item");
+console.log(box[0].dataset);
+console.log(box[0].innerHTML);
+
+
+turn = "x"
+
+let boxContainer = document.querySelector(".grid-container");
+boxContainer.addEventListener("click", modifyBox);
+
+function modifyBox(e){
+    if(e.target !== e.currentTarget){
+        var clickedItem = e.target.dataset.pos; //this returns data attribute of clicked element
+        gameboard[clickedItem]=turn;
+        box[clickedItem].innerHTML=turn;
+    }
+    e.stopPropagation();
+}
+
+console.log(getWinner(gameboard));
+
+
+
+while(getWinner(gameboard)==""){
+    
+}
