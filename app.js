@@ -62,7 +62,7 @@ function modifyBox(e){
         let winner = getWinner(gameboard);
         if(winner!==""){
             document.querySelector("#winner").innerHTML=winner+" won this game!"
-            //alert(winner+ " is Winner!");
+            alert(winner+ " is Winner!");
             return;
         }
         chance--;
